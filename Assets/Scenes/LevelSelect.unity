@@ -452,7 +452,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 7c634ed9e34cb1e4ba29be1000b56dd3, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -529,8 +529,8 @@ ParticleSystemRenderer:
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
-  m_MinParticleSize: 0
-  m_MaxParticleSize: 1.1
+  m_MinParticleSize: 1
+  m_MaxParticleSize: 2.2
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -625,7 +625,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -1385,7 +1385,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.281
+      scalar: 1
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1438,7 +1438,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 5
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5266,7 +5266,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381539224}
   m_LocalRotation: {x: 0.27059805, y: -0.6532815, z: 0.27059805, w: 0.6532815}
-  m_LocalPosition: {x: 13, y: 13, z: 10}
+  m_LocalPosition: {x: 20, y: 20, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5307,7 +5307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.4890137, y: -4.9781494}
+  m_AnchoredPosition: {x: 2.4890137, y: -4.9780884}
   m_SizeDelta: {x: 338.50928, y: 169.25464}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &508429340
@@ -5418,7 +5418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990953902e29e5f4d8e930f92093479f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: 6
+  levelToLoad: 5
 --- !u!95 &645319876
 Animator:
   serializedVersion: 3
@@ -5735,7 +5735,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3 Level
+  m_Text: "3 \u0423\u0440\u043E\u0432\u0435\u043D\u044C"
 --- !u!222 &1081699971
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5803,7 +5803,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: da15effa5aa0a464c8f50e04b6438e22, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5889,7 +5889,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 2 Level
+  m_Text: "2 \u0423\u0440\u043E\u0432\u0435\u043D\u044C"
 --- !u!222 &1145108736
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5925,9 +5925,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d229c684688675c42b90f0e98a44448b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 343130cdf304f2a47bd3b2f81d166c4a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.15
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6036,6 +6036,7 @@ GameObject:
   - component: {fileID: 1519536364}
   - component: {fileID: 1519536363}
   - component: {fileID: 1519536362}
+  - component: {fileID: 1519536365}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6108,6 +6109,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1519536365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519536361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c51dc50fd613a341bff5620f281febc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1621210060
 GameObject:
   m_ObjectHideFlags: 0
@@ -6260,7 +6273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Myfx: {fileID: 1621210067}
   clickfx: {fileID: 8300000, guid: 019fed86af3e29f4baf1b24eee7f41a7, type: 3}
-  hoverfx: {fileID: 8300000, guid: 1a3655999dd2fd94786160b38095fd55, type: 3}
+  hoverfx: {fileID: 8300000, guid: 8ca0e6c9da8227742929e4b31dc3caf2, type: 3}
 --- !u!114 &1621210066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6585,7 +6598,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: ad8d899a4cd25bd459b6a47fc3ee63f1, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -6753,7 +6766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Myfx: {fileID: 1752901107}
   clickfx: {fileID: 8300000, guid: 019fed86af3e29f4baf1b24eee7f41a7, type: 3}
-  hoverfx: {fileID: 8300000, guid: 1a3655999dd2fd94786160b38095fd55, type: 3}
+  hoverfx: {fileID: 8300000, guid: 8ca0e6c9da8227742929e4b31dc3caf2, type: 3}
 --- !u!114 &1752901106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7114,7 +7127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Myfx: {fileID: 1833883037}
   clickfx: {fileID: 8300000, guid: 019fed86af3e29f4baf1b24eee7f41a7, type: 3}
-  hoverfx: {fileID: 8300000, guid: 1a3655999dd2fd94786160b38095fd55, type: 3}
+  hoverfx: {fileID: 8300000, guid: 8ca0e6c9da8227742929e4b31dc3caf2, type: 3}
 --- !u!114 &1833883036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7479,7 +7492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Myfx: {fileID: 1961687505}
   clickfx: {fileID: 8300000, guid: 019fed86af3e29f4baf1b24eee7f41a7, type: 3}
-  hoverfx: {fileID: 8300000, guid: 1a3655999dd2fd94786160b38095fd55, type: 3}
+  hoverfx: {fileID: 8300000, guid: 8ca0e6c9da8227742929e4b31dc3caf2, type: 3}
 --- !u!114 &1961687504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7706,7 +7719,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1 Level
+  m_Text: "1 \u0423\u0440\u043E\u0432\u0435\u043D\u044C"
 --- !u!222 &2093436901
 CanvasRenderer:
   m_ObjectHideFlags: 0

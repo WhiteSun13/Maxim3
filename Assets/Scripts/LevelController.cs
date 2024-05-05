@@ -26,7 +26,7 @@ public class LevelController : MonoBehaviour
     }
     public void SetLivesText(int lives)
     {
-        livesText.text = lives.ToString() + "HP";
+        livesText.text = lives.ToString();
         slider.value = lives;
     }
     public void SetBossLivesText(int lives)
@@ -41,7 +41,7 @@ public class LevelController : MonoBehaviour
             PlayerPrefs.DeleteAll();
             FindObjectOfType<AudioManager>().Stop("MainMusic");
         }
-        BossText.text = lives.ToString() + "HP";
+        BossText.text = lives.ToString();
         Bossslider.value = lives;
     }
 }

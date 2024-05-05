@@ -1,11 +1,12 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using System.Threading;
 
 public class AudioManager : MonoBehaviour
 {
-
-	public static AudioManager instance;
+    public AudioMixer audioMixer;
+    public static AudioManager instance;
 
 	public AudioMixerGroup mixerGroup;
 	public Sound[] sounds;
@@ -37,7 +38,7 @@ public class AudioManager : MonoBehaviour
     }
 	void Update()
     {
-		foreach (Sound s in sounds)
+        foreach (Sound s in sounds)
 		{
 			s.source.volume = s.volume;
 			s.source.pitch = s.pitch;
@@ -71,7 +72,23 @@ public class AudioManager : MonoBehaviour
 		//s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 		s.source.Play();
 	}
-	public void Stop(string sound)
+	public void Pause()
+	{
+        foreach (Sound s in sounds)
+        {
+			s.source.mute = true;
+        }
+    }
+
+    public void Continue()
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source.mute = false;
+        }
+    }
+
+    public void Stop(string sound)
 	{
 		Destroy(gameObject);
 	}

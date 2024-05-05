@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e71888a4b9c6ee45aad43cf921ad403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
+  damage: 20
   bulletEffect: {fileID: 903627327627652292, guid: a5b4c4aaf902cd245b2d4a5158824ca4, type: 3}
   destroyByContact: 0
   destroyShots: 0

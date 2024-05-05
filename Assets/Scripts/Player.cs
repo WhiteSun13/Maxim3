@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [SerializeField] private AudioSource GFire;
+    public VariableJoystick MoveJoystick;
+    public VariableJoystick ShootJoystick;
     public float speed;
     public float jumpForce;
     private float moveInput;
@@ -32,6 +34,7 @@ public class Player : MonoBehaviour
     public static bool GameOver = false;
     //public static bool BullTime = false;
     public GameObject Spawntriger;
+    private YaAd YaAd;
 
     private void Start()
     {
@@ -42,6 +45,7 @@ public class Player : MonoBehaviour
         if (PlayerPrefs.HasKey("PosX"))  // проверяем, есть ли в сохранении подобная информация
             loadPosition();
         Time.timeScale = 1f;
+        YaAd = FindObjectOfType<YaAd>();
     }
 
     // Update is called once per frame
@@ -49,7 +53,8 @@ public class Player : MonoBehaviour
     {
         if (!isDead)
         {
-            moveInput = Input.GetAxis("Horizontal");
+            if (YaAd.device == "mobile" || YaAd.device == "tablet") { moveInput = MoveJoystick.Horizontal; }
+            else { moveInput = Input.GetAxis("Horizontal"); }
             rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
         }
     }
@@ -63,15 +68,39 @@ public class Player : MonoBehaviour
                 rb.velocity = Vector2.up * jumpForce;
                 FindObjectOfType<AudioManager>().Play("Jump");
             }
-            if (Input.GetMouseButton(0) && Time.time > nextFire)
+            if (YaAd.device == "mobile" || YaAd.device == "tablet")
             {
-                nextFire = Time.time + fireRate;
-                GFire.Play();
-                Instantiate(bulletEffect, shotSpawns[0].position, shotSpawns[0].rotation);
-                Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+                if (ShootJoystick.IsShootMob && Time.time > nextFire)
+                {
+                    nextFire = Time.time + fireRate;
+                    GFire.Play();
+                    Instantiate(bulletEffect, shotSpawns[0].position, shotSpawns[0].rotation);
+                    Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+                }
+            }
+            else
+            {
+                if (Input.GetMouseButton(0) && Time.time > nextFire)
+                {
+                    nextFire = Time.time + fireRate;
+                    GFire.Play();
+                    Instantiate(bulletEffect, shotSpawns[0].position, shotSpawns[0].rotation);
+                    Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+                }
             }
         }
     }
+
+    public void Jump()
+    {
+        isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
+        if (isGrounded == true)
+        {
+            rb.velocity = Vector2.up * jumpForce;
+            FindObjectOfType<AudioManager>().Play("Jump");
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Checkpoint")

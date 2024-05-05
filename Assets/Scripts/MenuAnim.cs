@@ -23,4 +23,9 @@ public class MenuAnim : MonoBehaviour
             anim.Play("Menu2");
         }
     }
+
+    public void StartMenu()
+    {
+        anim.Play("Menu1");
+    }
 }

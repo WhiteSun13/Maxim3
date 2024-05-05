@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
@@ -10,10 +11,21 @@ public class PauseMenu : MonoBehaviour
     public GameObject loadingPanel;
     public GameObject GoverUI;
     public GameObject RestartPanel;
+
+    private YaAd YaAd;
+    public GameObject MobileUI;
+    public GameObject GOPostProcess;
+    private void Start()
+    {
+        YaAd = FindObjectOfType<YaAd>();
+    }
     //public int levelToLoad;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !Player.GameOver && !Moto.GameOver)
+        if (YaAd.device == "mobile" || YaAd.device == "tablet") { MobileUI.SetActive(true); FindObjectOfType<PostProcessLayer>().enabled = false; GOPostProcess.SetActive(false); }
+        else { MobileUI.SetActive(false); FindObjectOfType<PostProcessLayer>().enabled = true; GOPostProcess.SetActive(true); }
+
+        if (Input.GetKeyDown(KeyCode.Return) && !Player.GameOver && !Moto.GameOver)
         {
             if (Paused)
             {
@@ -45,7 +57,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         Paused = false;
     }
-    void Pause()
+    public void Pause()
     {
         FindObjectOfType<AudioManager>().Play("PauseIn");
         pauseUI.SetActive(true);

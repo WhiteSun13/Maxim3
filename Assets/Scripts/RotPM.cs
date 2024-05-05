@@ -6,10 +6,13 @@ public class RotPM : MonoBehaviour
 {
     Vector3 pos;
     Camera main;
+    private YaAd YaAd;
+    public VariableJoystick ShootJoystick;
 
     private void Start()
     {
         main = FindObjectOfType<Camera>();
+        YaAd = FindObjectOfType<YaAd>();
     }
 
     // Update is called once per frame
@@ -21,13 +24,27 @@ public class RotPM : MonoBehaviour
     }
     void Flip()
     {
-        if(Input.mousePosition.x < pos.x)
+        if (YaAd.device == "mobile" || YaAd.device == "tablet")
         {
-            transform.localRotation = Quaternion.Euler(0, 180, 0);
+            if (ShootJoystick.Horizontal < 0)
+            {
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
+            }
+            if (ShootJoystick.Horizontal >= 0)
+            {
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
+            }
         }
-        if (Input.mousePosition.x > pos.x)
+        else
         {
-            transform.localRotation = Quaternion.Euler(0, 0, 0);
+            if (Input.mousePosition.x < pos.x)
+            {
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
+            }
+            if (Input.mousePosition.x > pos.x)
+            {
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
+            }
         }
     }
 }

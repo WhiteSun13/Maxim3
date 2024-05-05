@@ -7,12 +7,19 @@ public class AutoLoad : MonoBehaviour
 {
 	public float fireRate;
 	public int levelToLoad;
-	// Use this for initialization
-	void Start()
+    public KeyCode _keyCode = KeyCode.Return;
+    // Use this for initialization
+    void Start()
 	{
 		InvokeRepeating("LOL", fireRate, fireRate);
 	}
-	void LOL()
+
+    void Update()
+    {
+        if (Input.GetKeyDown(_keyCode)) LOL();
+    }
+
+    void LOL()
 	{
 		if (FindObjectOfType<AudioManager>() != null)
         {

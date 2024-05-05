@@ -15,6 +15,8 @@ public class Moto : MonoBehaviour
     private SpriteRenderer sprite;
     public float spawnTime;
     public float invencibilityTime;
+    private YaAd YaAd;
+    public VariableJoystick MoveJoystick;
 
     void Start()
     {
@@ -23,12 +25,14 @@ public class Moto : MonoBehaviour
         GameOver = false;
         Time.timeScale = 1f;
         sprite = GetComponent<SpriteRenderer>();
+        YaAd = FindObjectOfType<YaAd>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        if (YaAd.device == "mobile" || YaAd.device == "tablet") { moveInput = new Vector2(MoveJoystick.Horizontal, MoveJoystick.Vertical); }
+        else { moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")); }
         moveVelocity = moveInput.normalized * speed;
     }
 
